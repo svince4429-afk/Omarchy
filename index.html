@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<title>Omarchy Review/Setup – Vince</title>
+	<meta name="description" content="Personal experience using Omarchy: installation, first boot, Hyprland configuration, pros and cons, and custom keybinds.">
+	<meta name="author" content="Vince">
+	<base target="_blank">
+</head>
+<body>
+	<div class="page">
+	<article>
+		<h1>Hello.</h1>
+		<p>My name is Vince, I am from Hungary, I am interested in anything computer-related. This site was made to talk about some of the experiences I had using <a href="https://omarchy.org/">Omarchy</a>.</p>
+		<img src="dc9c413d-916e-4649-8188-edc823b344cd.png" alt="Omarchy desktop using nord theme.">
+		<h2>Set up.</h2>
+		<p>The installation was pretty smooth, I had no problems turning off secure-boot and the installer was really easy to use. It asked for everything that you would think it would ask for: keyboard layout, timezone, hostname, username.</p>
+		<p>The installation is done via a usb stick that has the Omarchy iso burned on to it. The official iso can be acquired from the Omarchy website: <a href="https://omarchy.org/">omarchy.org</a></p>
+		<p>If you have any questions about the installation, you should consult the Omarchy manual at <a href="https://learn.omacom.io/2/the-omarchy-manual">learn.omacom.io/2/the-omarchy-manual</a></p>
+		<p><strong>BE AWARE! THE INSTALLATION FORMATS THE DRIVE, ALL FILES WILL BE DELETED.</strong></p>
+		<h2>First boot.</h2>
+		<p>The first time you turn on your machine (with the os installed) you will be prompted to enter your password that you set during the installation. Then, it will boot you into the desktop.</p>
+		<p>In most cases, Omarchy will pick up both your screen and your mouse + keyboard. You may need to set the refresh rate of you monitor, because to my knowledge, it defaults to 60Hz. This can be done at Setup > Monitors. The format used by Omarchy is:</p>
+		<pre>monitor = [input], [resolution]@[refreshrate], auto, [scaling]</pre>
+		<p>For example:</p>
+		<pre>monitor = DP-2, 2560x1080@100, auto, 1</pre>
+		<h2>Some configuration.</h2>
+		<p>The default look of Omarchy is really pretty, but, if you want to change some stuff, you can totally do that too. Omarchy has really good theming, where you can change all the colors to a theme you like at Style > Theme.</p>
+		<p>Also, if you want you can tweak the Hyprland settings at Setup > Config > Hyprland and also other config files like Hyprlock or Walker. If you want to steal my animations, here they are:</p>
+		<pre>bezier = linear, 0, 0, 1, 1
+animation = windows, 1, 4, linear
+animation = workspaces, 1, 2, linear, fade
+animation = windowsIn, 1, 2, linear, popin 70%
+animation = windowsOut, 1, 2, linear, popin 70%
+</pre>
+		<p>If you choose to add them, remember to put them in at the end of the file and not replace the file.</p>
+		<h2>Pros and cons of Omarchy.</h2>
+		<p>Let's start with the good, Omarchy is really easy to set up, for anyone with even a little tech know-how. It looks and feels great out of the box with no touches, the default themes are brilliant and don't even get me started on the animations. It is everything good about Hyprland, without the pain of setting up Hyprland.</p>
+		<p>The default apps are either really good or why is this here. For ever perfect choice like Obs studio, there is a total miss like Basecamp, this is what some may call the sins of <a href="https://dhh.dk/">DHH</a>.</p>
+		<p>The default keybinds are so Mac that I want to vomit, remaping is a requirement.</p>
+		<p>This is what I would suggest:</p>
+		<pre># Vimkeys
+unbind = SUPER, J
+unbind = SUPER, K
+
+bindd = SUPER  CTRL, J, Toggle window split, togglesplit
+bindd = SUPER  ALT, K, Show key bindings, exec, omarchy-menu-keybindings
+
+bindd = SUPER, H, Move focus left, movefocus, l
+bindd = SUPER, L, Move focus right, movefocus, r
+bindd = SUPER, K, Move focus up, movefocus, u
+bindd = SUPER, J, Move focus down, movefocus, d
+
+bindd = SUPER SHIFT, H, Swap window to the left, swapwindow, l
+bindd = SUPER SHIFT, L, Swap window to the right, swapwindow, r
+bindd = SUPER SHIFT, K, Swap window up, swapwindow, u
+bindd = SUPER SHIFT, J, Swap window down, swapwindow, d
+
+bindd = SUPER ALT, H, Move window to group on left, moveintogroup, l
+bindd = SUPER ALT, L, Move window to group on right, moveintogroup, r
+bindd = SUPER ALT, K, Move window to group on top, moveintogroup, u
+bindd = SUPER ALT, J, Move window to group on bottom, moveintogroup, d
+
+bindd = SUPER ALT, H, Move grouped window focus left, changegroupactive, b
+bindd = SUPER ALT, L, Move grouped window focus right, changegroupactive, f
+
+# Remap Close current from W to Q
+unbind = SUPER, W
+bind = SUPER, Q, killactive</pre>
+		<p>Not perfect, not as sh*t as the default.</p>
+		<p>The same thing here, as with animations, add this to the end of the config, don't replace it!</p>
+		<p><i>Peace.</i></p>
+	</article>
+	</div>
+	<script>
+		document.querySelectorAll('pre').forEach(pre => {
+		  pre.addEventListener('click', async () => {
+			try {
+			  await navigator.clipboard.writeText(pre.textContent);
+			  console.log('Copied to clipboard!');
+			} catch (err) {
+			  console.error('Failed to copy: ', err);
+			}
+		  });
+		});
+	</script>
+</body>
+</html>
